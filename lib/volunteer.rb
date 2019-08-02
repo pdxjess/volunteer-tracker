@@ -10,4 +10,17 @@ class Volunteer
   def ==(volunteer_to_compare)
     self.name() = volunteer_to_compare.name()
   end
+
+  def self.all
+    volunteer_list = DB.exec("SELECT * FROM volunteers;")
+    volunteers = []
+    volunteer_list.each do |volunteer|
+      name = volunteer.fetch("name")
+      id = volunteer.fetch("id")
+      project_id = volunteer.fetch("project_id")
+      volunteers.push(Volunteer.new({:name => name, :project_id => project_id, :id => id}))
+    end
+    volunteers
+  end
+
 end
