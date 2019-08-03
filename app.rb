@@ -31,3 +31,10 @@ get('/projects/:id') do
   @project.update({:title => title})
   erb(:project)
 end
+
+delete('/projects'/:id') do
+  @project = Project.find(params.fetch('id').to_i)
+  @project.delete
+  @projects = Project.all
+  erb(:index)
+end
