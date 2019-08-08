@@ -1,5 +1,5 @@
 class Volunteer
-  attr_accessor (:name, :id, :project_id)
+  attr_accessor :name, :id, :project_id
 
   def initialize(attr)
     @name= attr.fetch(:name)
@@ -8,7 +8,7 @@ class Volunteer
   end
 
   def ==(volunteer_to_compare)
-    self.name() = volunteer_to_compare.name()
+    self.name() == volunteer_to_compare.name()
   end
 
   def self.all
